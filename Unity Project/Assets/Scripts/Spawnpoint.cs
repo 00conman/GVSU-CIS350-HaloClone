@@ -10,6 +10,8 @@ public class Spawnpoint : MonoBehaviour
     //unity refrence var
     [SerializeField] GameObject graphics;
 
+    //Bool to determine this spawnpoint's team
+    public bool isBlueTeam = false;
 
     /// <summary>
     /// Method which makes spawnpoints invisible when they are referenced/created

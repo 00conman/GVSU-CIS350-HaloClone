@@ -21,7 +21,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         //checks if another RoomManager exists and destroys it if there is one
         if (Instance)// != null)
-       {
+        {
             Destroy(gameObject);
             return;
         }
@@ -56,12 +56,17 @@ public class RoomManager : MonoBehaviourPunCallbacks
     /// <param name="loadSceneMode"></param>
     void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
+        //If user is between map scene range
         if ((scene.buildIndex > 1) && (scene.buildIndex < SceneManager.sceneCountInBuildSettings))
         {
+            //Create a playermanager
             PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
         }
     }
 
+    /// <summary>
+    /// Method which cases a local player to force a player onto the menu scene
+    /// </summary>
     public override void OnLeftRoom()
     {
         SceneManager.LoadScene(1);
